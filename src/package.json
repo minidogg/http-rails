@@ -1,0 +1,22 @@
+{
+  "name": "http-rails",
+  "version": "0.1.0",
+  "description": "An express.js clone",
+  "main": "entry.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minidogg/http-rails.git"
+  },
+  "keywords": [
+    "http"
+  ],
+  "author": "Minidogg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/minidogg/http-rails/issues"
+  },
+  "homepage": "https://github.com/minidogg/http-rails#readme"
+}

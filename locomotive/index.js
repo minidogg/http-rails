@@ -1,0 +1,40 @@
+var loco = { foo: 42 };
+const fs = require("fs");
+const path = require("path");
+
+class locoClass {
+  constructor(options = {}) {
+    this.staticKeys = [];
+  }
+  render({ req, res }, file, data) {
+    let fileData = fs.readFileSync(file, "utf-8");
+    for (let key of Object.keys(data)) {
+      fileData = fileData.replaceAll(key, data[key]);
+    }
+
+    res.setFileType(path.extname(file).replaceAll(".", ""));
+    res.send(fileData);
+  }
+
+  static(dir) {
+    var folder = fs.readdirSync(dir).map((e) => "/" + e);
+    return async (req, res, next) => {
+      if (req.pathname == "/") req.pathname = "/index.html";
+
+      if (folder.includes(req.pathname)) {
+        this.render(
+          { req, res },
+          path.join(dir, req.pathname),
+          this.staticKeys,
+        );
+
+        return;
+      }
+      next();
+    };
+  }
+}
+
+var callableLoco = Object.assign(locoClass, loco);
+
+module.exports = callableLoco;
