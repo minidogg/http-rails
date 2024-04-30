@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 //require rails
-const rails = require("../src");
+const rails = require("../src/entry.js");
 //create an instance of rails
 const rail = new rails();
 
@@ -11,13 +11,13 @@ const rail = new rails();
 const port = 3000;
 
 //require and create an instance of locomotive which is a basic templating engine
-const locomotive = require("../locomotive");
+const locomotive = require("../locomotive")
 const loco = new locomotive();
 
 //   use the built in static middleware
 // rail.use(rails.static(path.resolve("./public/")));
 //    or use the one from locomotive
-rail.use(loco.static(path.resolve("../src/public/")));
+rail.use(loco.static(path.resolve("./public/")));
 loco.staticKeys["{(chip)}"] = "Cheeto";
 
 //setup the 404 page

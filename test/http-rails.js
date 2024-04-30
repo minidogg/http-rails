@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 //require rails
-const rails = require("./entry.js");
+const rails = require("../src/entry.js");
 //create an instance of rails
 const rail = new rails();
 

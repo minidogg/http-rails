@@ -4,7 +4,7 @@
   "description": "A basic template engine for http rails.",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test.js"
+    "test": "cd ../test/ && node ./locomotive.js"
   },
   "repository": {
     "type": "git",
