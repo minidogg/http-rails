@@ -20,7 +20,10 @@ class rail {
     async routing(req, res) {
       let urlParts = url.parse(req.url);
       let args = [new railReq(req, urlParts), new railRes(res)];
+
+      //Loop through all items in the routes array
       for (let i = 0; i < this.routes.length; i++) {
+
         //Use Middleware
         if (this.routes[i].type == "use") {
           let done = false;
@@ -32,31 +35,30 @@ class rail {
           }
           continue;
         }
+
         //GET method
-        if (
-          this.routes[i].route == urlParts.pathname &&
-          this.routes[i].type == req.method
-        ) {
+        if (this.routes[i].route == urlParts.pathname && this.routes[i].type == req.method) {
           await this.routes[i].code(...args);
           return;
         }
+
         //proxy method
-        if (
-          this.routes[i].route == urlParts.pathname &&
-          this.routes[i].type == "proxy"
-        ) {
+        if (this.routes[i].route == urlParts.pathname && this.routes[i].type == "proxy") {
           let parts = req.url.split("?");
           parts[0] = this.routes[i].newRoute;
           req.url = parts.join("?");
           this.routing(req, res);
           return;
         }
+
       }
+
       //404
       if (this.statusFunc["404"]) {
         this.statusFunc["404"](...args);
       }
     }
+
     async setup() {
       this.routes = [];
       this.statusFunc = {};
@@ -77,7 +79,7 @@ class rail {
     use(code) {
       this.routes.push({ route: "", code: code, type: "use" });
     }
-    proxy(route, file) {
+    proxy(route, newRoute) {
       this.routes.push({ route: route, type: "proxy", newRoute: file });
     }
   }
