@@ -17,6 +17,6 @@ rails.rail = rail
 rails.static = _static
 rails.cors = cors
 
-
+//export it
 var callableRails = Object.assign(rail, rails);
 module.exports = callableRails
