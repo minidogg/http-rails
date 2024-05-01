@@ -42,8 +42,8 @@ class rail {
           return;
         }
 
-        //proxy method
-        if (this.routes[i].route == urlParts.pathname && this.routes[i].type == "proxy") {
+        //spoof method
+        if (this.routes[i].route == urlParts.pathname && this.routes[i].type == "spoof") {
           let parts = req.url.split("?");
           parts[0] = this.routes[i].newRoute;
           req.url = parts.join("?");
@@ -79,8 +79,8 @@ class rail {
     use(code) {
       this.routes.push({ route: "", code: code, type: "use" });
     }
-    proxy(route, newRoute) {
-      this.routes.push({ route: route, type: "proxy", newRoute: newRoute });
+    spoof(route, newRoute) {
+      this.routes.push({ route: route, type: "spoof", newRoute: newRoute });
     }
   }
   module.exports = rail

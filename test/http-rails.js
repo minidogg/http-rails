@@ -26,8 +26,8 @@ rail.get("/joe", (req, res) => {
   res.send("<h1>joe</h1>");
 });
 
-//proxy the "/cat" path to use the "/cat.html" file
-rail.proxy("/cat", "/really-long-file-name-for-a-cat-file.html");
+//spoofy the "/really-long-file-name-for-a-cat-file.html" to be accessible from "/cat"
+rail.spoof("/cat", "/really-long-file-name-for-a-cat-file.html");
 
 rail.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
