@@ -3,9 +3,9 @@ const fs = require("fs");
 const path = require("path");
 const railClass = require("../src/scripts/rail");
 
-const evalRegex = /{{((.|\n|\r)+)}}/
+const evalRegex = /{{(.+?)}}/;
 
-const noCache = `<meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Expires" content="-1">`
+const noCache = `<meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Expires" content="-1">`;
 const autoRefresh = `<script>
 (async()=>{
 
@@ -18,50 +18,60 @@ const autoRefresh = `<script>
     },2000)
 
 })()
-</script>`
-
+</script>`;
+const genRanHex = (size) =>
+  [...Array(size)]
+    .map(() => Math.floor(Math.random() * 16).toString(16))
+    .join("");
 class locoClass {
-  constructor(rail,options = {}) {
+  constructor(rail, options = {}) {
     this.staticKeys = [];
-    this.extWhitelist = [".html",".css"]
-    this.eval = true
-    this.startTime = Date.now()
-
+    this.extWhitelist = [".html", ".css"];
+    this.eval = true;
+    this.startTime = Date.now();
+    this.lineBreak = genRanHex(5) + "_linebreak";
     Object.keys(options).forEach((key) => {
-        this[key] = options[key];
+      this[key] = options[key];
     });
     /**
      * @type {railClass}
      */
-    this.rail = rail
-    this.rail.get("/locomotive/api/start",(req,res)=>{
-        res.send(this.startTime.toString())
-    })
+    this.rail = rail;
+    this.rail.get("/locomotive/api/start", (req, res) => {
+      res.send(this.startTime.toString());
+    });
   }
+
   render({ req, res }, file, data) {
     let fileData = fs.readFileSync(file, "utf-8");
-    if(this.extWhitelist.includes(path.extname(file))){
-        for (let key of Object.keys(data)) {
-            fileData = fileData.replaceAll(`{(${key})}`, data[key]);
+    if (this.extWhitelist.includes(path.extname(file))) {
+      fileData = fileData.replaceAll("\n", this.lineBreak);
+      for (let key of Object.keys(data)) {
+        fileData = fileData.replaceAll(`{(${key})}`, data[key]);
+      }
+      if (this.eval == true)
+        while (evalRegex.test(fileData)) {
+          let c = evalRegex.exec(fileData)[1];
+          fileData = fileData.replace(
+            evalRegex,
+            eval(c.replaceAll(this.lineBreak, "\n")),
+          );
         }
-        if(this.eval==true)while(evalRegex.test(fileData)){
-            let c = evalRegex.exec(fileData)[1]
-            fileData = fileData.replace(evalRegex,eval(c))
-        }
-        fileData = fileData.replace("[noCache]",noCache)
-        fileData = fileData.replace("[autoRefresh]",autoRefresh)
+      fileData = fileData.replace("[noCache]", noCache);
+      fileData = fileData.replace("[autoRefresh]", autoRefresh);
     }
-    
 
+    fileData = fileData.replaceAll(this.lineBreak, "\n");
     res.setFileType(path.extname(file).replaceAll(".", ""));
     res.send(fileData);
   }
 
   static(dir) {
     var folder = fs.readdirSync(dir).map((e) => "/" + e);
-    var readTime = Date.now()
+    var readTime = Date.now();
     return async (req, res, next) => {
-    if(readTime+(10*1000)<Date.now())folder = fs.readdirSync(dir).map((e) => "/" + e);
+      if (readTime + 10 * 1000 < Date.now())
+        folder = fs.readdirSync(dir).map((e) => "/" + e);
       if (req.pathname == "/") req.pathname = "/index.html";
 
       if (folder.includes(req.pathname)) {
