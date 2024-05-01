@@ -30,7 +30,7 @@ rail.status("404", (req, res) => {
 rail.get("/joe", (req, res) => {
   res.setFileType("html"); // this is only really neccesary when you aren't sending a plain text file or html file.
   res.send("<h1>joe</h1>Joe is the true savior. Worship Joe.");
-});
+},rails.cors()); //apply cors middleware to only the joe path
 
 //spoof the "/really-long-file-name-for-a-cat-file.html" to be accessible from "/cat"
 rail.spoof("/cat", "/really-long-file-name-for-a-cat-file.html");

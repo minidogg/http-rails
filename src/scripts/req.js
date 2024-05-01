@@ -16,8 +16,9 @@ class railReq {
       //query parser
       this.query = {};
       try {
-        if (this.req.url.includes("?")) {
-          let query = this.req.url.split("?")[1];
+        let url = this.req.url
+        if (url.includes("?")) {
+          let query = url.split("?")[1];
           query = query.split("&");
           query.forEach((e) => {
             let ee = e.split("=");

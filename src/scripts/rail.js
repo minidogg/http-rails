@@ -17,61 +17,21 @@ class rail {
     }
   
     //routing method
-    async routing(req, res) {
-      let urlParts = url.parse(req.url);
-      let args = [new railReq(req, urlParts), new railRes(res)];
-
-      //Loop through all items in the routes array
-      for (let i = 0; i < this.routes.length; i++) {
-
-        //Use Middleware
-        if (this.routes[i].type == "use") {
-          let done = false;
-          await this.routes[i].code(...args, () => {
-            done = true;
-          });
-          if (done !== true) {
-            return;
-          }
-          continue;
-        }
-
-        //GET method
-        if (this.routes[i].route == urlParts.pathname && this.routes[i].type == req.method) {
-          await this.routes[i].code(...args);
-          return;
-        }
-
-        //spoof method
-        if (this.routes[i].route == urlParts.pathname && this.routes[i].type == "spoof") {
-          let parts = req.url.split("?");
-          parts[0] = this.routes[i].newRoute;
-          req.url = parts.join("?");
-          this.routing(req, res);
-          return;
-        }
-
-      }
-
-      //404
-      if (this.statusFunc["404"]) {
-        this.statusFunc["404"](...args);
-      }
-    }
+    routing = require("./routing.js")
 
     async setup() {
       this.routes = [];
       this.statusFunc = {};
       this.server = http.createServer(async (req, res) => {
         // Routing
-        await this.routing(req, res);
+        await this.routing(req, res,this);
       });
     }
     listen(port, callback) {
       this.server.listen(port, callback);
     }
-    get(route, code) {
-      this.routes.push({ route: route, code: code, type: "GET" });
+    get(route, code,middleware=((req,res,next)=>{next()})) {
+      this.routes.push({ route: route, code: code, type: "GET",middleware });
     }
     status(status, code) {
       this.statusFunc[status] = code;
