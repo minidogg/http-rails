@@ -29,7 +29,7 @@ rail.status("404", (req, res) => {
 //make a get route that sends back "joe"
 rail.get("/joe", (req, res) => {
   res.setFileType("html"); // this is only really neccesary when you aren't sending a plain text file or html file.
-  res.send("<h1>joe</h1>");
+  res.send("<h1>joe</h1>Joe is the true savior. Worship Joe.");
 });
 
 //proxy the "/cat" path to use the "/cat.html" file
