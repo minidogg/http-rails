@@ -6,9 +6,12 @@ const fs = require("fs");
 const rails = require("../src/entry.js");
 //create an instance of rails
 const rail = new rails();
+//allow cors early so that it will be caught by everything else
+rail.use(rails.cors())
 
 //set the port for later
 const port = 3000;
+
 
 //   use the built in static middleware
 rail.use(rails.static(path.resolve("./public/")));
@@ -22,6 +25,7 @@ rail.status("404", (req, res) => {
 
 //make a get route that sends back "joe"
 rail.get("/joe", (req, res) => {
+  console.log(req.query)
   res.setFileType("html"); // this is only really neccesary when you aren't sending a plain text file or html file.
   res.send("<h1>joe</h1>");
 });
