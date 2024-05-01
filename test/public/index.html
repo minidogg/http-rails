@@ -5,14 +5,33 @@
     [noCache]
   </head>
   <body>
-    Note: there may be some things like {(someText)} if you are not using the template engine. It's just simpler to have both the http-rails test and locomotive test using the same public folder.
+    <span id="warning">Note: there may be some things like {(someText)} if you are not using the template engine. It's just simpler to have both the http-rails test and locomotive test using the same public folder.</span>
+    <script>
+      try{
+        if({{true}}){
+          document.getElementById("warning").remove()
+        }
+      }catch{}
+    </script>
     <h1>I like {(chip)}s</h1>
     <h3>According to the server 10+5={{      
       let five = 5
       10+five
     }}</h3>
 
-    {{Math.round(Math.random()*10)>=5?"I am the milk man, my milk is delicious.":""}}
+    <span>This websites current server code: </span><div class="code" id="code">{{
+        const fs = require("fs");
+      let i = 0
+        let css = fs.readFileSync("./locomotive.js", "utf-8").split("\n").map(e=>{
+          i++
+          return i+" |  "+e
+        }).join("\n")
+        css
+      }}</div>
+    <br>
+    <script>
+      document.getElementById("code").textContent = document.getElementById("code").innerHTML
+    </script>
     [autoRefresh]
   </body>
 </html>

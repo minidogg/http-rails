@@ -1,3 +1,24 @@
 body{
     background-color:green;
   }
+
+*{
+  font-family:Arial;
+}
+
+.code{
+  font-size:20px;
+  line-height:30px;
+  color:white;
+  background-color:black;
+  white-space:pre-wrap;
+
+  width:90vw;
+  height:fit-content;
+
+  padding:3vmin;
+  border-radius:3vmin;
+
+  display:block;
+  margin:auto;
+}

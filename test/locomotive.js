@@ -11,7 +11,7 @@ const rail = new rails();
 const port = 3000;
 
 //require and create an instance of locomotive which is a basic templating engine
-const locomotive = require("../locomotive")
+const locomotive = require("../locomotive");
 const loco = new locomotive(rail);
 
 //   use the built in static middleware
@@ -23,7 +23,7 @@ loco.staticKeys["chip"] = "Cheeto";
 //setup the 404 page
 const missing = path.join(__dirname, "public", "404.html");
 rail.status("404", (req, res) => {
-  loco.render({ req, res }, missing, { "page": req.pathname });
+  loco.render({ req, res }, missing, { page: req.pathname });
 });
 
 //make a get route that sends back "joe"
