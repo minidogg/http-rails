@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const railClass = require("../src/scripts/rail");
 
-const evalRegex = /{{(.+)}}/
+const evalRegex = /{{((.|\n|\r)+)}}/
 
 const noCache = `<meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Expires" content="-1">`
 const autoRefresh = `<script>
