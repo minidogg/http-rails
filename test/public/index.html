@@ -1,9 +1,14 @@
-<html>
+<!DOCTYPE html>
   <head>
     <title>HttpRails</title>
     <link rel="stylesheet" href="stylesheet.css" />
+    [noCache]
   </head>
   <body>
+    Note: there may be some things like {(someText)} if you are not using the template engine. It's just simpler to have both the http-rails test and locomotive test using the same public folder.
     <h1>I like {(chip)}s</h1>
+    <h3>According to the server 10+5={{10+5}}</h3>
+
+    [autoRefresh]
   </body>
 </html>

@@ -12,18 +12,18 @@ const port = 3000;
 
 //require and create an instance of locomotive which is a basic templating engine
 const locomotive = require("../locomotive")
-const loco = new locomotive();
+const loco = new locomotive(rail);
 
 //   use the built in static middleware
 // rail.use(rails.static(path.resolve("./public/")));
 //    or use the one from locomotive
 rail.use(loco.static(path.resolve("./public/")));
-loco.staticKeys["{(chip)}"] = "Cheeto";
+loco.staticKeys["chip"] = "Cheeto";
 
 //setup the 404 page
 const missing = path.join(__dirname, "public", "404.html");
 rail.status("404", (req, res) => {
-  loco.render({ req, res }, missing, { "{(page)}": req.pathname });
+  loco.render({ req, res }, missing, { "page": req.pathname });
 });
 
 //make a get route that sends back "joe"
