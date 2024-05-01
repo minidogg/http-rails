@@ -24,7 +24,6 @@ rail.status("404", (req, res) => {
 
 //make a get route that sends back "joe"
 rail.get("/joe", (req, res) => {
-  console.log(req.query)
   res.setFileType("html"); // this is only really neccesary when you aren't sending a plain text file or html file.
   res.send("<h1>joe</h1>");
 },rails.cors()); //apply cors middleware to only the joe path
