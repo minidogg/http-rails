@@ -80,7 +80,7 @@ class rail {
       this.routes.push({ route: "", code: code, type: "use" });
     }
     proxy(route, newRoute) {
-      this.routes.push({ route: route, type: "proxy", newRoute: file });
+      this.routes.push({ route: route, type: "proxy", newRoute: newRoute });
     }
   }
   module.exports = rail

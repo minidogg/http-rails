@@ -5,12 +5,16 @@ const path = require("path");
 class locoClass {
   constructor(options = {}) {
     this.staticKeys = [];
+    this.extWhitelist = [".html",".css"]
   }
   render({ req, res }, file, data) {
     let fileData = fs.readFileSync(file, "utf-8");
-    for (let key of Object.keys(data)) {
-      fileData = fileData.replaceAll(key, data[key]);
+    if(this.extWhitelist.includes(path.extname)){
+        for (let key of Object.keys(data)) {
+            fileData = fileData.replaceAll(key, data[key]);
+        }
     }
+    
 
     res.setFileType(path.extname(file).replaceAll(".", ""));
     res.send(fileData);
