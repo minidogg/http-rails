@@ -6,7 +6,7 @@ const fs = require("fs");
 const rails = require("../src/entry.js");
 //create an instance of rails
 const rail = new rails();
-//allow cors early so that it will be caught by everything else
+//allow cors early
 rail.use(rails.cors())
 
 //set the port for later
