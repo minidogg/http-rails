@@ -8,8 +8,8 @@ const railClass = require("./rail")
 
 /**
  * 
- * @param {*} req 
- * @param {*} res 
+ * @param {http.ClientRequest} req 
+ * @param {http.ServerResponse} res 
  * @param {railClass} rail 
  * @returns 
  */
@@ -34,6 +34,13 @@ module.exports = async(req, res,rail)=>{
 
       //GET method
       if (rail.routes[i].route == urlParts.pathname && rail.routes[i].type == req.method) {
+        let done = false;
+        rail.routes[i].middleware(...args, () => {
+            done = true;
+        })
+        if (done !== true) {
+            return;
+        }
         await rail.routes[i].code(...args);
         return;
       }

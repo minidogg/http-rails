@@ -30,8 +30,8 @@ class rail {
     listen(port, callback) {
       this.server.listen(port, callback);
     }
-    get(route, code) {
-      this.routes.push({ route: route, code: code, type: "GET" });
+    get(route, code,middleware=((req,res,next)=>{next()})) {
+      this.routes.push({ route: route, code: code, type: "GET",middleware });
     }
     status(status, code) {
       this.statusFunc[status] = code;
