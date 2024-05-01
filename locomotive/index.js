@@ -9,7 +9,7 @@ class locoClass {
   }
   render({ req, res }, file, data) {
     let fileData = fs.readFileSync(file, "utf-8");
-    if(this.extWhitelist.includes(path.extname)){
+    if(this.extWhitelist.includes(path.extname(file))){
         for (let key of Object.keys(data)) {
             fileData = fileData.replaceAll(key, data[key]);
         }
@@ -22,7 +22,9 @@ class locoClass {
 
   static(dir) {
     var folder = fs.readdirSync(dir).map((e) => "/" + e);
+    var readTime = Date.now()
     return async (req, res, next) => {
+    if(readTime+(10*1000)<Date.now())folder = fs.readdirSync(dir).map((e) => "/" + e);
       if (req.pathname == "/") req.pathname = "/index.html";
 
       if (folder.includes(req.pathname)) {
