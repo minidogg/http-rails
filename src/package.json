@@ -1,6 +1,6 @@
 {
   "name": "http-rails",
-  "version": "0.53.4",
+  "version": "0.53.5",
   "description": "An express.js clone",
   "main": "entry.js",
   "scripts": {
