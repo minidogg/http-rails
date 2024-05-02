@@ -6,6 +6,10 @@ body {
   color: #f0f0f0;
 }
 
+.warning{
+  color:yellow;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -40,8 +44,15 @@ code {
 }
 
 a {
+  all:unset;
+  text-decoration:underline;
   color: #58a6ff;
 }
+a:hover{
+  color: #58a6ff;
+  cursor:pointer;
+}
+
 
 .section {
   margin-bottom: 20px;
