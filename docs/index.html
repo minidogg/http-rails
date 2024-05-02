@@ -1,194 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>http-rails Documentation</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #121212;
-            color: #f0f0f0;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #121212;
+        color: #f0f0f0;
+      }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #1f1f1f;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #1f1f1f;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
 
-        h1 {
-            color: #58a6ff;
-        }
+      h1 {
+        color: #58a6ff;
+      }
 
-        h2 {
-            color: #ffa858;
-        }
+      h2 {
+        color: #ffa858;
+      }
 
-        h3 {
-            color: #a8ff58;
-        }
+      h3 {
+        color: #a8ff58;
+      }
 
-        pre {
-            background-color: #212121;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            color: #f0f0f0;
-        }
+      pre {
+        background-color: #212121;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+        color: #f0f0f0;
+      }
 
-        code {
-            color: #58a6ff;
-        }
+      code {
+        color: #58a6ff;
+        background-color: rbga(0, 0, 0, 0.25);
+      }
 
-        a {
-            color: #58a6ff;
-        }
+      a {
+        color: #58a6ff;
+      }
 
-        .section {
-            margin-bottom: 20px;
-        }
+      .section {
+        margin-bottom: 20px;
+      }
 
-        .subsection {
-            margin-left: 20px;
-        }
+      .subsection {
+        margin-left: 20px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
+      <section>
+        <h1>http-rails Documentation</h1>
+        <p>
+          Welcome to the documentation for http-rails, a simple HTTP server
+          framework for Node.js!
+        </p>
+      </section>
+
+      <section>
+        <h2>Installation</h2>
+        <p>To install http-rails, use npm:</p>
+        <pre>npm install http-rails</pre>
+      </section>
+
+      <section>
+        <h2>Getting Started</h2>
+
         <section>
-            <h1>http-rails Documentation</h1>
-            <p>Welcome to the documentation for http-rails, a simple HTTP server framework for Node.js!</p>
+          <h3>Step 1: Create a New JavaScript File</h3>
+          <p>
+            Create a new JavaScript file (e.g., <code>app.js</code>) in your
+            project directory.
+          </p>
         </section>
-    
+
         <section>
-            <h2>Installation</h2>
-            <p>To install http-rails, use npm:</p>
-            <pre>npm install http-rails</pre>
-        </section>
-    
-        <section>
-            <h2>Getting Started</h2>
-    
-            <section>
-                <h3>Step 1: Create a New JavaScript File</h3>
-                <p>Create a new JavaScript file (e.g., <code>app.js</code>) in your project directory.</p>
-            </section>
-    
-            <section>
-                <h3>Step 2: Require Necessary Modules</h3>
-                <p>Require the necessary modules in your JavaScript file:</p>
-                <pre><code>//requires that are needed
+          <h3>Step 2: Require Necessary Modules</h3>
+          <p>Require the necessary modules in your JavaScript file:</p>
+          <pre><code>//requires that are needed
     const path = require("path");
     const fs = require("fs");
     const rails = require("http-rails");
                 </code></pre>
-            </section>
         </section>
-    
+      </section>
+
+      <section>
+        <h2>Usage</h2>
+
         <section>
-            <h2>Usage</h2>
-    
-            <section>
-                <h3>Step 3: Create an Instance of http-rails</h3>
-                <p>Create an instance of http-rails:</p>
-                <pre><code>const rail = new rails();
+          <h3>Step 3: Create an Instance of http-rails</h3>
+          <p>Create an instance of http-rails:</p>
+          <pre><code>const rail = new rails();
                 </code></pre>
-            </section>
-    
-            <section>
-                <h3>Step 4: Set the Port</h3>
-                <p>Set the port number on which your server will listen:</p>
-                <pre><code>const port = 3000;
-                </code></pre>
-            </section>
         </section>
-    
+
         <section>
-            <h2>Configuration</h2>
-    
-            <section>
-                <h3>Step 5: Use Middleware</h3>
-                <p>Use built-in middleware functions or create custom ones to handle requests:</p>
-                <pre><code>rail.use(rails.static(path.resolve("./public/")));
+          <h3>Step 4: Set the Port</h3>
+          <p>Set the port number on which your server will listen:</p>
+          <pre><code>const port = 3000;
                 </code></pre>
-            </section>
-    
-            <section>
-                <h3>Step 6: Setup Error Pages</h3>
-                <p>Set up custom error pages, such as a 404 page:</p>
-                <pre><code>const missing = path.join(__dirname, "public", "404.html");
+        </section>
+      </section>
+
+      <section>
+        <h2>Configuration</h2>
+
+        <section>
+          <h3>Step 5: Use Middleware</h3>
+          <p>
+            Use built-in middleware functions or create custom ones to handle
+            requests:
+          </p>
+          <pre><code>rail.use(rails.static(path.resolve("./public/")));
+                </code></pre>
+        </section>
+
+        <section>
+          <h3>Step 6: Setup Error Pages</h3>
+          <p>Set up custom error pages, such as a 404 page:</p>
+          <pre><code>const missing = path.join(__dirname, "public", "404.html");
     rail.status("404", (req, res) => {
       res.sendFile(missing)
     });
                 </code></pre>
-            </section>
         </section>
-    
+      </section>
+
+      <section>
+        <h2>Usage</h2>
+
         <section>
-            <h2>Usage</h2>
-    
-            <section>
-                <h3>Step 7: Define Routes</h3>
-                <p>Define routes for your application:</p>
-                <pre><code>rail.get("/joe", (req, res) => {
+          <h3>Step 7: Define Routes</h3>
+          <p>Define routes for your application:</p>
+          <pre><code>rail.get("/joe", (req, res) => {
       res.setFileType("html");
       res.send("<h1>joe</h1>");
     });
                 </code></pre>
-            </section>
-    
-            <section>
-                <h3>Step 8: Spoof Routes</h3>
-                <p>Create routes that point to existing files or paths:</p>
-                <pre><code>rail.spoof("/cat", "/really-long-file-name-for-a-cat-file.html");
-                </code></pre>
-            </section>
         </section>
-    
+
         <section>
-            <h2>Usage</h2>
-    
-            <section>
-                <h3>Step 9: Start the Server</h3>
-                <p>Start the HTTP server and listen on the specified port:</p>
-                <pre><code>rail.listen(port, () => {
+          <h3>Step 8: Spoof Routes</h3>
+          <p>Create routes that point to existing files or paths:</p>
+          <pre><code>rail.spoof("/cat", "/really-long-file-name-for-a-cat-file.html");
+                </code></pre>
+        </section>
+      </section>
+
+      <section>
+        <h2>Usage</h2>
+
+        <section>
+          <h3>Step 9: Start the Server</h3>
+          <p>Start the HTTP server and listen on the specified port:</p>
+          <pre><code>rail.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
                 </code></pre>
-            </section>
-    
-            <section>
-                <h3>Step 10: Run Your Application</h3>
-                <p>Save your changes in the JavaScript file and run your application using Node.js:</p>
-                <pre><code>node app.js
-                </code></pre>
-            </section>
         </section>
-    
-        <section>
-            <h2>Usage</h2>
-    
-            <section>
-                <h3>Step 11: Access Your Website</h3>
-                <p>Once your server is running, you can access your website by opening a web browser and navigating to <code>http://localhost:3000</code> (or whichever port you specified).</p>
-            </section>
-    
-        </section>
-    
-        <section>
-            <h2>Conclusion</h2>
-            <p>Congratulations! You've now created a simple website using http-rails. You can further customize and expand your application by adding more routes, middleware, and functionality as needed.</p>
-        </section>
-    </div>
-    
-</body>
 
+        <section>
+          <h3>Step 10: Run Your Application</h3>
+          <p>
+            Save your changes in the JavaScript file and run your application
+            using Node.js:
+          </p>
+          <pre><code>node app.js
+                </code></pre>
+        </section>
+      </section>
+
+      <section>
+        <h2>Usage</h2>
+
+        <section>
+          <h3>Step 11: Access Your Website</h3>
+          <p>
+            Once your server is running, you can access your website by opening
+            a web browser and navigating to
+            <code>http://localhost:3000</code> (or whichever port you
+            specified).
+          </p>
+        </section>
+      </section>
+
+      <section>
+        <h2>Conclusion</h2>
+        <p>
+          Congratulations! You've now created a simple website using http-rails.
+          You can further customize and expand your application by adding more
+          routes, middleware, and functionality as needed.
+        </p>
+      </section>
+    </div>
+
+    <script>
+      Array.from(document.querySelectorAll("code")).forEach((el) => {
+        el.textContent = el.innerHTML;
+      });
+    </script>
+  </body>
 </html>
