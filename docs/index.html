@@ -1,11 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HttpRails - Docs</title>
+    <title>http-rails Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #1f1f1f;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #58a6ff;
+        }
+
+        h2 {
+            color: #ffa858;
+        }
+
+        h3 {
+            color: #a8ff58;
+        }
+
+        pre {
+            background-color: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            color: #f0f0f0;
+        }
+
+        code {
+            color: #58a6ff;
+        }
+
+        a {
+            color: #58a6ff;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .subsection {
+            margin-left: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>The HttpRail docs aren't finished yet. Sorry!</h1>
+    <div class="container">
+        <h1>http-rails Documentation</h1>
+        <p>Welcome to the documentation for http-rails, a simple HTTP server framework for Node.js!</p>
+
+        <div class="section">
+            <h2>Introduction</h2>
+            <p>This documentation provides a comprehensive guide to using http-rails to build web applications in Node.js.</p>
+        </div>
+
+        <div class="section">
+            <h2>Installation</h2>
+            <p>To install http-rails, use npm:</p>
+            <pre>npm install http-rails</pre>
+        </div>
+
+        <div class="section">
+            <h2>Getting Started</h2>
+
+            <div class="subsection">
+                <h3>Create a New JavaScript File</h3>
+                <p>Create a new JavaScript file (e.g., <code>app.js</code>) in your project directory.</p>
+            </div>
+
+            <div class="subsection">
+                <h3>Require Necessary Modules</h3>
+                <p>Require the necessary modules in your JavaScript file:</p>
+                <pre><code>//requires that are needed
+    const path = require("path");
+    const fs = require("fs");
+    const rails = require("http-rails");
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Middleware</h2>
+            <p>Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle. They can perform various tasks, such as modifying request and response objects, ending the request-response cycle, and calling the next middleware function in the stack.</p>
+        </div>
+
+        <div class="section">
+            <h2>Routes</h2>
+            <p>Routes are paths in your application that correspond to a specific HTTP method (GET, POST, PUT, DELETE, etc.) and a handler function, which is executed when the route is matched.</p>
+        </div>
+
+        <div class="section">
+            <h2>Static Files</h2>
+            <p>The built-in <code>static</code> middleware serves static files, such as HTML, CSS, JavaScript, images, etc., from a specified directory.</p>
+        </div>
+
+        <!-- Other sections can be added similarly -->
+
+        <div class="section">
+            <h2>Conclusion</h2>
+            <p>Congratulations! You've now learned how to use http-rails to build web applications in Node.js. Explore further and experiment with different middleware, routes, and functionalities to create powerful web applications.</p>
+        </div>
+    </div>
 </body>
+
 </html>
