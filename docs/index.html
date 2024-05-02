@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>http-rails Documentation</title>
+    <title>HTTP Rails Documentation</title>
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -43,11 +43,10 @@
         <section>
           <h3>Step 2: Require Necessary Modules</h3>
           <p>Require the necessary modules in your JavaScript file:</p>
-          <pre><code>//requires that are needed
-    const path = require("path");
-    const fs = require("fs");
-    const rails = require("http-rails");
-                </code></pre>
+          <pre><code>
+const path = require("path");
+const fs = require("fs");
+const rails = require("http-rails");</code></pre>
         </section>
       </section>
 
@@ -57,15 +56,13 @@
         <section>
           <h3>Step 3: Create an Instance of http-rails</h3>
           <p>Create an instance of http-rails:</p>
-          <pre><code>const rail = new rails();
-                </code></pre>
+          <pre><code>const rail = new rails();</code></pre>
         </section>
 
         <section>
           <h3>Step 4: Set the Port</h3>
           <p>Set the port number on which your server will listen:</p>
-          <pre><code>const port = 3000;
-                </code></pre>
+          <pre><code>const port = 3000;</code></pre>
         </section>
       </section>
 
@@ -78,8 +75,7 @@
             Use built-in middleware functions or create custom ones to handle
             requests:
           </p>
-          <pre><code>rail.use(rails.static(path.resolve("./public/")));
-                </code></pre>
+          <pre><code>rail.use(rails.static(path.resolve("./public/")));</code></pre>
         </section>
 
         <section>
@@ -88,8 +84,7 @@
           <pre><code>const missing = path.join(__dirname, "public", "404.html");
     rail.status("404", (req, res) => {
       res.sendFile(missing)
-    });
-                </code></pre>
+    });</code></pre>
         </section>
       </section>
 
@@ -102,15 +97,13 @@
           <pre><code>rail.get("/joe", (req, res) => {
       res.setFileType("html");
       res.send("<h1>joe</h1>");
-    });
-                </code></pre>
+    });</code></pre>
         </section>
 
         <section>
           <h3>Step 8: Spoof Routes</h3>
           <p>Create routes that point to existing files or paths:</p>
-          <pre><code>rail.spoof("/cat", "/really-long-file-name-for-a-cat-file.html");
-                </code></pre>
+          <pre><code>rail.spoof("/cat", "/really-long-file-name-for-a-cat-file.html");</code></pre>
         </section>
       </section>
 
@@ -122,8 +115,7 @@
           <p>Start the HTTP server and listen on the specified port:</p>
           <pre><code>rail.listen(port, () => {
       console.log(`Server is running on port ${port}`);
-    });
-                </code></pre>
+    });</code></pre>
         </section>
 
         <section>
@@ -132,8 +124,7 @@
             Save your changes in the JavaScript file and run your application
             using Node.js:
           </p>
-          <pre><code>node app.js
-                </code></pre>
+          <pre><code>node app.js</code></pre>
         </section>
       </section>
 
