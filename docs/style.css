@@ -1,7 +1,6 @@
-body {
+body{
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  margin: 20px;
   background-color: #121212;
   color: #f0f0f0;
 }
@@ -10,8 +9,45 @@ body {
   color:yellow;
 }
 
+#nav{
+  background-color:#2f2f2f;
+  
+  max-width: 700px;
+  width:90vw;
+  
+  display:block;
+  margin:auto;
+  margin-bottom:2vh;
+  padding:2vmin;
+  border-radius:2vmin;
+
+  font-size:3vmin;
+}
+#nav>*{
+  line-height:100%;
+}
+.navButton{
+  all:unset;
+  background-color:#4f4f4f;
+  padding:1vmin;
+  border-radius:2vmin;
+  max-width:30vw;
+  user-select:none;
+  transition:all 0.2s ease-in-out;
+}
+.navButton:hover{
+  cursor:pointer;
+  background-color:#6f6f6f;
+  padding:1.2vmin;
+}
+.navButton:active{
+  background-color:#5e5e5e;
+  padding:1.5vmin;
+}
+
 .container {
-  max-width: 800px;
+  max-width: 700px;
+  width:80vw;
   margin: 0 auto;
   padding: 20px;
   border-radius: 10px;
