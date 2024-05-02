@@ -63,61 +63,132 @@
 
 <body>
     <div class="container">
-        <h1>http-rails Documentation</h1>
-        <p>Welcome to the documentation for http-rails, a simple HTTP server framework for Node.js!</p>
-
-        <div class="section">
-            <h2>Introduction</h2>
-            <p>This documentation provides a comprehensive guide to using http-rails to build web applications in Node.js.</p>
-        </div>
-
-        <div class="section">
+        <section>
+            <h1>http-rails Documentation</h1>
+            <p>Welcome to the documentation for http-rails, a simple HTTP server framework for Node.js!</p>
+        </section>
+    
+        <section>
             <h2>Installation</h2>
             <p>To install http-rails, use npm:</p>
             <pre>npm install http-rails</pre>
-        </div>
-
-        <div class="section">
+        </section>
+    
+        <section>
             <h2>Getting Started</h2>
-
-            <div class="subsection">
-                <h3>Create a New JavaScript File</h3>
+    
+            <section>
+                <h3>Step 1: Create a New JavaScript File</h3>
                 <p>Create a new JavaScript file (e.g., <code>app.js</code>) in your project directory.</p>
-            </div>
-
-            <div class="subsection">
-                <h3>Require Necessary Modules</h3>
+            </section>
+    
+            <section>
+                <h3>Step 2: Require Necessary Modules</h3>
                 <p>Require the necessary modules in your JavaScript file:</p>
                 <pre><code>//requires that are needed
     const path = require("path");
     const fs = require("fs");
     const rails = require("http-rails");
                 </code></pre>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Middleware</h2>
-            <p>Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle. They can perform various tasks, such as modifying request and response objects, ending the request-response cycle, and calling the next middleware function in the stack.</p>
-        </div>
-
-        <div class="section">
-            <h2>Routes</h2>
-            <p>Routes are paths in your application that correspond to a specific HTTP method (GET, POST, PUT, DELETE, etc.) and a handler function, which is executed when the route is matched.</p>
-        </div>
-
-        <div class="section">
-            <h2>Static Files</h2>
-            <p>The built-in <code>static</code> middleware serves static files, such as HTML, CSS, JavaScript, images, etc., from a specified directory.</p>
-        </div>
-
-        <!-- Other sections can be added similarly -->
-
-        <div class="section">
+            </section>
+        </section>
+    
+        <section>
+            <h2>Usage</h2>
+    
+            <section>
+                <h3>Step 3: Create an Instance of http-rails</h3>
+                <p>Create an instance of http-rails:</p>
+                <pre><code>const rail = new rails();
+                </code></pre>
+            </section>
+    
+            <section>
+                <h3>Step 4: Set the Port</h3>
+                <p>Set the port number on which your server will listen:</p>
+                <pre><code>const port = 3000;
+                </code></pre>
+            </section>
+        </section>
+    
+        <section>
+            <h2>Configuration</h2>
+    
+            <section>
+                <h3>Step 5: Use Middleware</h3>
+                <p>Use built-in middleware functions or create custom ones to handle requests:</p>
+                <pre><code>rail.use(rails.static(path.resolve("./public/")));
+                </code></pre>
+            </section>
+    
+            <section>
+                <h3>Step 6: Setup Error Pages</h3>
+                <p>Set up custom error pages, such as a 404 page:</p>
+                <pre><code>const missing = path.join(__dirname, "public", "404.html");
+    rail.status("404", (req, res) => {
+      res.sendFile(missing)
+    });
+                </code></pre>
+            </section>
+        </section>
+    
+        <section>
+            <h2>Usage</h2>
+    
+            <section>
+                <h3>Step 7: Define Routes</h3>
+                <p>Define routes for your application:</p>
+                <pre><code>rail.get("/joe", (req, res) => {
+      res.setFileType("html");
+      res.send("<h1>joe</h1>");
+    });
+                </code></pre>
+            </section>
+    
+            <section>
+                <h3>Step 8: Spoof Routes</h3>
+                <p>Create routes that point to existing files or paths:</p>
+                <pre><code>rail.spoof("/cat", "/really-long-file-name-for-a-cat-file.html");
+                </code></pre>
+            </section>
+        </section>
+    
+        <section>
+            <h2>Usage</h2>
+    
+            <section>
+                <h3>Step 9: Start the Server</h3>
+                <p>Start the HTTP server and listen on the specified port:</p>
+                <pre><code>rail.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+                </code></pre>
+            </section>
+    
+            <section>
+                <h3>Step 10: Run Your Application</h3>
+                <p>Save your changes in the JavaScript file and run your application using Node.js:</p>
+                <pre><code>node app.js
+                </code></pre>
+            </section>
+        </section>
+    
+        <section>
+            <h2>Usage</h2>
+    
+            <section>
+                <h3>Step 11: Access Your Website</h3>
+                <p>Once your server is running, you can access your website by opening a web browser and navigating to <code>http://localhost:3000</code> (or whichever port you specified).</p>
+            </section>
+    
+        </section>
+    
+        <section>
             <h2>Conclusion</h2>
-            <p>Congratulations! You've now learned how to use http-rails to build web applications in Node.js. Explore further and experiment with different middleware, routes, and functionalities to create powerful web applications.</p>
-        </div>
+            <p>Congratulations! You've now created a simple website using http-rails. You can further customize and expand your application by adding more routes, middleware, and functionality as needed.</p>
+        </section>
     </div>
+    
 </body>
 
 </html>
