@@ -30,15 +30,19 @@ body{
 }
 .navButton{
   all:unset;
+  text-align:center;
+  min-width:20%;
+  max-width:20%;
   background-color:#4f4f4f;
   padding:1vmin;
   border-radius:2vmin;
-  max-width:30vw;
   user-select:none;
   transition:all 0.2s ease-in-out;
 
   margin-left:0.3vw;
   margin-right:0.3vw;
+
+  font-size:100%;
 }
 .navButton:hover{
   cursor:pointer;
