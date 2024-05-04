@@ -1,3 +1,4 @@
+// TODO: add more from https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
 module.exports = {
     //?text
     css: "text/css",
@@ -14,11 +15,15 @@ module.exports = {
     xtml:"application/xhtml+xml",
     json:"application/json",
     jsonld:"application/ld+json",
-    // xml:"application/xml",
     zip:"application/zip",
     //?audio
     mp3:"audio/mpeg",
     //?video
     mp4:"video/mp4", 
     webm:"video/webm",
+    webp:"image/webp",
+    //?image
+    png:"image/png",
+    jpeg:"image/jpeg",
+    jpg:"image/jpeg"
   };
