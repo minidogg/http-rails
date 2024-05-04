@@ -33,6 +33,9 @@ class rail {
     get(route, code,middleware=((req,res,next)=>{next()})) {
       this.routes.push({ route: route, code: code, type: "GET",middleware });
     }
+    post(route, code,middleware=((req,res,next)=>{next()})) {
+      this.routes.push({ route: route, code: code, type: "POST",middleware });
+    }
     status(status, code) {
       this.statusFunc[status] = code;
     }

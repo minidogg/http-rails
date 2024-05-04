@@ -28,5 +28,9 @@ class railRes {
       if (contentTypes[extension])
         this.headers["Content-Type"] = contentTypes[extension];
     }
+    json(json){
+      this.headers["Content-Type"] = "application/json"
+      this.send(JSON.stringify(json))
+    }
   }
 module.exports = railRes

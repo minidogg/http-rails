@@ -14,6 +14,7 @@ const railClass = require("./rail")
  * @returns 
  */
 module.exports = async(req, res,rail)=>{
+
     let urlParts = url.parse(req.url);
     let args = [new railReq(req, urlParts), new railRes(res)];
 
@@ -33,7 +34,7 @@ module.exports = async(req, res,rail)=>{
       }
 
       //GET method
-      if (rail.routes[i].route == urlParts.pathname && rail.routes[i].type == req.method) {
+      if (rail.routes[i].route == urlParts.pathname && rail.routes[i].type == "GET"&&rail.routes[i].type == req.method) {
         let done = false;
         rail.routes[i].middleware(...args, () => {
             done = true;
@@ -43,6 +44,26 @@ module.exports = async(req, res,rail)=>{
         }
         await rail.routes[i].code(...args);
         return;
+      }
+      //POST method
+      if (rail.routes[i].route == urlParts.pathname && rail.routes[i].type == "POST"&&rail.routes[i].type == req.method) {
+        await ((()=>{
+          return new Promise(async(r)=>{
+              let done = false;
+              rail.routes[i].middleware(...args, () => {
+                  done = true;
+              })
+              if (done !== true) {
+                  r(true)
+                  return;
+              }
+              await rail.routes[i].code(...args);
+              r(true)
+              return
+          })
+        })())
+        return
+
       }
 
       //spoof method
@@ -60,4 +81,6 @@ module.exports = async(req, res,rail)=>{
     if (rail.statusFunc["404"]) {
       rail.statusFunc["404"](...args);
     }
+
+
   }

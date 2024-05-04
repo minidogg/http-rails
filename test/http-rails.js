@@ -31,6 +31,12 @@ rail.get("/joe", (req, res) => {
 //spoof the "/really-long-file-name-for-a-cat-file.html" to be accessible from "/cat"
 rail.spoof("/cat", "/really-long-file-name-for-a-cat-file.html");
 
+
+//post request listener
+rail.post("/post",(req,res)=>{
+  res.json({a:1})
+})
+
 rail.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
