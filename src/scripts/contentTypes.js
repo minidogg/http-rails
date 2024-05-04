@@ -16,6 +16,7 @@ module.exports = {
     json:"application/json",
     jsonld:"application/ld+json",
     zip:"application/zip",
+    "7z":"application/x-7z-compressed",
     //?audio
     mp3:"audio/mpeg",
     //?video
