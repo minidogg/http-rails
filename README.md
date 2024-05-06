@@ -32,16 +32,26 @@ npm install http-rails
 Here's a basic example of how to create a simple HTTP Rails application:
 
 ```javascript
-const { HttpRails } = require('http-rails');
+// Require rails
+const RailsApp = require('http-rails');
 
-const app = new HttpRails();
+// Setup rails
+const app = new RailsApp();
+const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello, HTTP Rails!');
+// Send a site at root
+app.get('/', (req, res) => { 
+
+    // Send site to user
+    res.send('Hello, HTTP Rails!');
+
+    // Log to console
+    console.log("Site has been visited!");
 });
 
-app.listen(3000, () => {
-  console.log('HTTP Rails app listening on port 3000');
+// Start the app
+app.listen(port, () => {
+    console.log('HTTP Rails app listening on port 3000');
 });
 ```
 
