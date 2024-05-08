@@ -11,6 +11,7 @@ class railRes {
       this.headers = {};
       this.sent = false;
       this.status = 200;
+        this.setFileType("html")
     }
     send(data) {
       this.res.writeHead(this.status, this.headers);
